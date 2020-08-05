@@ -1,0 +1,29 @@
+server:
+  port: 8091
+  tomcat:
+    max-connections: 10
+spring:
+  application:
+    name: service-order
+  datasource:
+    driver-class-name: com.mysql.jdbc.Driver
+    url: jdbc:mysql://101.200.88.43:3306/shop?serverTimezone=Asia/Shanghai&characterEncoding=utf8&useSSL=false
+    username: admin
+    password: 1234qwer,
+  jpa:
+    properties:
+      hibernate:
+        hbm2ddl:
+          auto: update
+        dialect: org.hibernate.dialect.MySQL5InnoDBDialect
+  cloud:
+    nacos:
+      discovery:
+        server-addr: 101.200.88.43:8848
+    sentinel:
+      transport:
+        port: 9999
+        dashboard: 127.0.0.1:8080
+service-product :
+  ribbon :
+    NFLoadBalancerRuleClassName : com.netflix.loadbalancer.RandomRule
