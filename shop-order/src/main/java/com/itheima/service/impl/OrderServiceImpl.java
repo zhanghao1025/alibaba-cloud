@@ -1,6 +1,7 @@
 package com.itheima.service.impl;
 
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.itheima.dao.OrderDao;
 import com.itheima.domain.Order;
 import com.itheima.service.OrderService;
@@ -22,5 +23,11 @@ public class OrderServiceImpl implements OrderService {
     public Order createOrder(Order order) {
         Order save = orderDao.save(order);
         return save;
+    }
+
+    @Override
+    @SentinelResource("message")
+    public String getMessage() {
+        return "message";
     }
 }

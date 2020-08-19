@@ -50,8 +50,16 @@ public class OrderControllerSentinel {
         return order;
     }
 
-    @RequestMapping("order/message")
-    public String getMessage(){
-       return "测试熔断";
+    @RequestMapping("order/message1")
+    public String getMessage1()
+    {
+        orderService.getMessage();
+       return "测试熔断1";
+    }
+
+    @RequestMapping("order/message2")
+    public String getMessage2(){
+        orderService.getMessage();
+        return "测试熔断2";
     }
 }
