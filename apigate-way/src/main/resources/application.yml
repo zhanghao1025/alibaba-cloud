@@ -1,0 +1,23 @@
+server:
+  port: 7777
+spring:
+  application:
+    name: api-gateway
+  cloud:
+    gateway:
+      routes: #路由数组【】
+      - id: product_route #当前路由的唯一标识名称
+#        uri: http://127.0.0.1:8081 #需要转发的地址
+        uri: lb://service-product #lb代表负载均衡
+        order: 1 #优先级
+        predicates: #断言 当满足path规定的路径时，路由才会生效转发
+        - Path=/product-serv/**
+        - Age=0,20
+        filters: #请求转发过程中，对请求做一些处理
+        - StripPrefix=1 #在请求之前去掉几级路径
+      discovery:
+        locator:
+          enabled: true
+    nacos:
+      discovery:
+        server-addr: 101.200.88.43:8848

@@ -12,6 +12,7 @@
         <module>shop-user</module>
         <module>shop-product</module>
         <module>shop-order</module>
+        <module>apigate-way</module>
     </modules>
     <packaging>pom</packaging>
 

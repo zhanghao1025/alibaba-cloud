@@ -1,5 +1,6 @@
 package com.itheima.controller;
 
+import com.alibaba.csp.sentinel.annotation.SentinelResource;
 import com.itheima.domain.Order;
 import com.itheima.domain.Product;
 import com.itheima.service.OrderService;
@@ -32,6 +33,12 @@ public class OrderControllerSentinel {
         log.info("查询商品id{}",pid);
 
         Product product = productFeignService.findProductById(pid);
+        if (404==product.getPid()){
+            Order order = new Order();
+            order.setUname("出错了");
+            return order;
+        }
+
         log.info("商品:{}",product.toString());
         Order order = new Order();
         order.setUid(1);
@@ -49,17 +56,37 @@ public class OrderControllerSentinel {
 //        log.info("订单:{}",result.toString());
         return order;
     }
-
+    int i=0;
     @RequestMapping("order/message1")
     public String getMessage1()
     {
-        orderService.getMessage();
+//        orderService.getMessage();
        return "测试熔断1";
     }
 
     @RequestMapping("order/message2")
     public String getMessage2(){
-        orderService.getMessage();
+//        orderService.getMessage();
+        i++;
+        if (i%3==0){
+            throw new RuntimeException();
+        }
+
         return "测试熔断2";
+    }
+
+    @RequestMapping("order/message3")
+    @SentinelResource("message")
+    public String getMessage3(String name,String age){
+
+
+        return "测试熔断3"+age+name;
+    }
+
+    @RequestMapping("order/message4")
+    public String getMessage4(){
+        String zhangsna = orderService.getMessage4("zhangsna");
+
+        return zhangsna;
     }
 }

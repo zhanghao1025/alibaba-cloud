@@ -6,4 +6,6 @@ public interface OrderService {
     Order createOrder(Order order);
 
     String getMessage();
+
+    String getMessage4(String name);
 }
