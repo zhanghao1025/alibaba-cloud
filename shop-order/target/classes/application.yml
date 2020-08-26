@@ -22,8 +22,14 @@ spring:
         server-addr: 101.200.88.43:8848
     sentinel:
       transport:
-        port: 9999
-        dashboard: 127.0.0.1:8080
+        port: 8371
+        dashboard: 127.0.0.1:8081
+#      filter:
+#        enabled: false
 service-product :
   ribbon :
     NFLoadBalancerRuleClassName : com.netflix.loadbalancer.RandomRule
+#feign开启sentinel注解
+feign:
+  sentinel:
+    enabled: true

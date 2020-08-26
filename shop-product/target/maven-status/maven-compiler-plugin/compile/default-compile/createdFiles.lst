@@ -1,5 +1,5 @@
-itheima\dao\ProductDao.class
-itheima\service\impl\ProductServiceImpl.class
-itheima\service\ProductService.class
-itheima\ProductApplication.class
-itheima\controller\ProductController.class
+com\itheima\dao\ProductDao.class
+com\itheima\service\impl\ProductServiceImpl.class
+com\itheima\ProductApplication.class
+com\itheima\controller\ProductController.class
+com\itheima\service\ProductService.class
