@@ -15,9 +15,14 @@ spring:
         - Age=0,20
         filters: #请求转发过程中，对请求做一些处理
         - StripPrefix=1 #在请求之前去掉几级路径
+        #下面这两个是内置的过滤器
+        #- AddRequestHeader=zhanghao,1993
+        #- RedirectTo=500,http://localhost:7777/product-serv/product/message #必须是以三开头
+        #自定义过滤器
+        - Log=false,true
       discovery:
-        locator:
-          enabled: true
+          locator:
+            enabled: true
     nacos:
       discovery:
         server-addr: 101.200.88.43:8848

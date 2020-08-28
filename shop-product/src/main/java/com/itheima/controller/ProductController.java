@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.servlet.http.HttpServletRequest;
+
 /**
  * @author ZhangHao
  * @Title: UserController
@@ -24,9 +26,15 @@ public class ProductController {
     private ProductService productService;
 
     @RequestMapping("/{pid}")
-    public Product queryProductById(@PathVariable Integer pid){
+    public Product queryProductById(@PathVariable Integer pid, HttpServletRequest request){
+        String zhanghao = request.getHeader("zhanghao");
         log.info("查询{}商品",pid);
+        log.info("header值{}",zhanghao);
         Product product=productService.findProductByPid(pid);
         return product;
+    }
+    @RequestMapping("/message")
+    public String message(){
+        return "message";
     }
 }

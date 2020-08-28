@@ -1,4 +1,4 @@
-package com.itheima;
+package com.itheima.predicates;
 
 import com.alibaba.nacos.client.utils.StringUtils;
 import lombok.Data;
