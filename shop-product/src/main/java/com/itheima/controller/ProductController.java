@@ -25,6 +25,25 @@ public class ProductController {
     @Autowired
     private ProductService productService;
 
+
+    @RequestMapping("/api1/demo1")
+    public String demo1(){
+        return "message";
+    }
+    @RequestMapping("/api1/demo2")
+    public String demo2(){
+        return "message";
+    }
+    @RequestMapping("/api2/demo1")
+    public String demo3(){
+        return "message";
+    }
+    @RequestMapping("/api2/demo2")
+    public String demo4(){
+        return "message";
+    }
+
+
     @RequestMapping("/{pid}")
     public Product queryProductById(@PathVariable Integer pid, HttpServletRequest request){
         String zhanghao = request.getHeader("zhanghao");
